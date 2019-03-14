@@ -41,8 +41,13 @@ Copyright © 2011-2019 Natalia Portillo
 #define FALSE 0
 #define TRUE 1
 
-int SendScsiCommand(int fd, void *cdb, unsigned char cdb_len, unsigned char *buffer, unsigned int buffer_len,
-                    unsigned char **senseBuffer, int direction)
+int SendScsiCommand(int fd,
+                    void *cdb,
+                    unsigned char cdb_len,
+                    unsigned char *buffer,
+                    unsigned int buffer_len,
+                    unsigned char **senseBuffer,
+                    int direction)
 {
     if(buffer == NULL || cdb == NULL)
         return -1;
@@ -147,8 +152,14 @@ int StopUnit(int fd, unsigned char **senseBuffer)
     return StartStopUnit(fd, senseBuffer, FALSE, 0, 0, FALSE, FALSE, FALSE);
 }
 
-int StartStopUnit(int fd, unsigned char **senseBuffer, int immediate, uint8_t formatLayer, uint8_t powerConditions,
-                  int changeFormatLayer, int loadEject, int start)
+int StartStopUnit(int fd,
+                  unsigned char **senseBuffer,
+                  int immediate,
+                  uint8_t formatLayer,
+                  uint8_t powerConditions,
+                  int changeFormatLayer,
+                  int loadEject,
+                  int start)
 {
     unsigned char cmd_len = 6;
     char          cdb[]   = {SCSI_START_STOP_UNIT, 0, 0, 0, 0, 0};
@@ -228,9 +239,13 @@ int LoadUnload(int fd, unsigned char **senseBuffer, int immediate, int load, int
     return error;
 }
 
-int
-ModeSense6(int fd, unsigned char **buffer, unsigned char **senseBuffer, int DBD, uint8_t pageControl, uint8_t pageCode,
-           uint8_t subPageCode)
+int ModeSense6(int fd,
+               unsigned char **buffer,
+               unsigned char **senseBuffer,
+               int DBD,
+               uint8_t pageControl,
+               uint8_t pageCode,
+               uint8_t subPageCode)
 {
     unsigned char cmd_len    = 6;
     unsigned int  buffer_len = 255;
@@ -262,8 +277,14 @@ ModeSense6(int fd, unsigned char **buffer, unsigned char **senseBuffer, int DBD,
     return error;
 }
 
-int ModeSense10(int fd, unsigned char **buffer, unsigned char **senseBuffer, int LLBAA, int DBD, uint8_t pageControl,
-                uint8_t pageCode, uint8_t subPageCode)
+int ModeSense10(int fd,
+                unsigned char **buffer,
+                unsigned char **senseBuffer,
+                int LLBAA,
+                int DBD,
+                uint8_t pageControl,
+                uint8_t pageCode,
+                uint8_t subPageCode)
 {
     unsigned char cmd_len    = 10;
     unsigned int  buffer_len = 4096;
@@ -358,7 +379,11 @@ int ReadCapacity16(int fd, unsigned char **buffer, unsigned char **senseBuffer, 
     return error;
 }
 
-int Read6(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint32_t lba, uint32_t blockSize,
+int Read6(int fd,
+          unsigned char **buffer,
+          unsigned char **senseBuffer,
+          uint32_t lba,
+          uint32_t blockSize,
           uint8_t transferLength)
 {
     unsigned char cmd_len = 6;
@@ -378,8 +403,18 @@ int Read6(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint32_t 
     return error;
 }
 
-int Read10(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint8_t rdprotect, int dpo, int fua, int fuaNv,
-           int relAddr, uint32_t lba, uint32_t blockSize, uint8_t groupNumber, uint16_t transferLength)
+int Read10(int fd,
+           unsigned char **buffer,
+           unsigned char **senseBuffer,
+           uint8_t rdprotect,
+           int dpo,
+           int fua,
+           int fuaNv,
+           int relAddr,
+           uint32_t lba,
+           uint32_t blockSize,
+           uint8_t groupNumber,
+           uint16_t transferLength)
 {
     unsigned char cmd_len = 10;
     unsigned int  buflen  = transferLength * blockSize;
@@ -410,8 +445,19 @@ int Read10(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint8_t 
     return error;
 }
 
-int Read12(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint8_t rdprotect, int dpo, int fua, int fuaNv,
-           int relAddr, uint32_t lba, uint32_t blockSize, uint8_t groupNumber, uint32_t transferLength, int streaming)
+int Read12(int fd,
+           unsigned char **buffer,
+           unsigned char **senseBuffer,
+           uint8_t rdprotect,
+           int dpo,
+           int fua,
+           int fuaNv,
+           int relAddr,
+           uint32_t lba,
+           uint32_t blockSize,
+           uint8_t groupNumber,
+           uint32_t transferLength,
+           int streaming)
 {
     unsigned char cmd_len = 12;
     unsigned int  buflen  = transferLength * blockSize;
@@ -446,8 +492,18 @@ int Read12(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint8_t 
     return error;
 }
 
-int Read16(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint8_t rdprotect, int dpo, int fua, int fuaNv,
-           uint64_t lba, uint32_t blockSize, uint8_t groupNumber, uint32_t transferLength, int streaming)
+int Read16(int fd,
+           unsigned char **buffer,
+           unsigned char **senseBuffer,
+           uint8_t rdprotect,
+           int dpo,
+           int fua,
+           int fuaNv,
+           uint64_t lba,
+           uint32_t blockSize,
+           uint8_t groupNumber,
+           uint32_t transferLength,
+           int streaming)
 {
     unsigned char cmd_len = 16;
     unsigned int  buflen  = transferLength * blockSize;
@@ -484,7 +540,12 @@ int Read16(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint8_t 
     return error;
 }
 
-int ReadLong10(int fd, unsigned char **buffer, unsigned char **senseBuffer, int correct, int relAddr, uint32_t lba,
+int ReadLong10(int fd,
+               unsigned char **buffer,
+               unsigned char **senseBuffer,
+               int correct,
+               int relAddr,
+               uint32_t lba,
                uint16_t transferBytes)
 {
     unsigned char cmd_len = 10;
@@ -509,7 +570,11 @@ int ReadLong10(int fd, unsigned char **buffer, unsigned char **senseBuffer, int 
     return error;
 }
 
-int ReadLong16(int fd, unsigned char **buffer, unsigned char **senseBuffer, int correct, uint64_t lba,
+int ReadLong16(int fd,
+               unsigned char **buffer,
+               unsigned char **senseBuffer,
+               int correct,
+               uint64_t lba,
                uint32_t transferBytes)
 {
     unsigned char cmd_len = 16;
@@ -578,7 +643,10 @@ int TestUnitReady(int fd, unsigned char **senseBuffer)
     return error;
 }
 
-int GetConfiguration(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint16_t startingFeatureNumber,
+int GetConfiguration(int fd,
+                     unsigned char **buffer,
+                     unsigned char **senseBuffer,
+                     uint16_t startingFeatureNumber,
                      uint8_t RT)
 {
     unsigned char cmd_len    = 10;
@@ -612,7 +680,11 @@ int GetConfiguration(int fd, unsigned char **buffer, unsigned char **senseBuffer
     return error;
 }
 
-int ReadTocPmaAtip(int fd, unsigned char **buffer, unsigned char **senseBuffer, int MSF, uint8_t format,
+int ReadTocPmaAtip(int fd,
+                   unsigned char **buffer,
+                   unsigned char **senseBuffer,
+                   int MSF,
+                   uint8_t format,
                    uint8_t trackSessionNumber)
 {
     unsigned char cmd_len    = 10;
@@ -650,8 +722,14 @@ int ReadTocPmaAtip(int fd, unsigned char **buffer, unsigned char **senseBuffer, 
     return error;
 }
 
-int ReadDiscStructure(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint8_t mediaType, uint32_t address,
-                      uint8_t layerNumber, uint8_t format, uint8_t AGID)
+int ReadDiscStructure(int fd,
+                      unsigned char **buffer,
+                      unsigned char **senseBuffer,
+                      uint8_t mediaType,
+                      uint32_t address,
+                      uint8_t layerNumber,
+                      uint8_t format,
+                      uint8_t AGID)
 {
     unsigned char cmd_len    = 12;
     uint16_t      buffer_len = 8;
@@ -688,9 +766,21 @@ int ReadDiscStructure(int fd, unsigned char **buffer, unsigned char **senseBuffe
     return error;
 }
 
-int ReadCd(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint32_t lba, uint32_t blockSize,
-           uint32_t transferLength, uint8_t expectedSectorType, int DAP, int relAddr, int sync, uint8_t headerCodes,
-           int userData, int edcEcc, uint8_t C2Error, uint8_t subchannel)
+int ReadCd(int fd,
+           unsigned char **buffer,
+           unsigned char **senseBuffer,
+           uint32_t lba,
+           uint32_t blockSize,
+           uint32_t transferLength,
+           uint8_t expectedSectorType,
+           int DAP,
+           int relAddr,
+           int sync,
+           uint8_t headerCodes,
+           int userData,
+           int edcEcc,
+           uint8_t C2Error,
+           uint8_t subchannel)
 {
     unsigned char cmd_len    = 12;
     uint32_t      buffer_len = transferLength * blockSize;
@@ -725,9 +815,20 @@ int ReadCd(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint32_t
     return error;
 }
 
-int ReadCdMsf(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint32_t startMsf, uint32_t endMsf,
-              uint32_t blockSize, uint8_t expectedSectorType, int DAP, int sync, uint8_t headerCodes, int userData,
-              int edcEcc, uint8_t C2Error, uint8_t subchannel)
+int ReadCdMsf(int fd,
+              unsigned char **buffer,
+              unsigned char **senseBuffer,
+              uint32_t startMsf,
+              uint32_t endMsf,
+              uint32_t blockSize,
+              uint8_t expectedSectorType,
+              int DAP,
+              int sync,
+              uint8_t headerCodes,
+              int userData,
+              int edcEcc,
+              uint8_t C2Error,
+              uint8_t subchannel)
 {
     unsigned char cmd_len = 12;
     char          cdb[]   = {MMC_READ_CD_MSF, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -761,8 +862,13 @@ int ReadCdMsf(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint3
     return error;
 }
 
-int PlextorReadCdDa(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint32_t lba, uint32_t blockSize,
-                    uint32_t transferLength, uint8_t subchannel)
+int PlextorReadCdDa(int fd,
+                    unsigned char **buffer,
+                    unsigned char **senseBuffer,
+                    uint32_t lba,
+                    uint32_t blockSize,
+                    uint32_t transferLength,
+                    uint8_t subchannel)
 {
     unsigned char cmd_len    = 12;
     uint32_t      buffer_len = transferLength * blockSize;
@@ -807,8 +913,13 @@ PlextorReadRawDvd(int fd, unsigned char **buffer, unsigned char **senseBuffer, u
     return error;
 }
 
-int PioneerReadCdDa(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint32_t lba, uint32_t blockSize,
-                    uint32_t transferLength, uint8_t subchannel)
+int PioneerReadCdDa(int fd,
+                    unsigned char **buffer,
+                    unsigned char **senseBuffer,
+                    uint32_t lba,
+                    uint32_t blockSize,
+                    uint32_t transferLength,
+                    uint8_t subchannel)
 {
     unsigned char cmd_len    = 12;
     uint32_t      buffer_len = transferLength * blockSize;
@@ -830,8 +941,13 @@ int PioneerReadCdDa(int fd, unsigned char **buffer, unsigned char **senseBuffer,
     return error;
 }
 
-int PioneerReadCdDaMsf(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint32_t startMsf, uint32_t endMsf,
-                       uint32_t blockSize, uint8_t subchannel)
+int PioneerReadCdDaMsf(int fd,
+                       unsigned char **buffer,
+                       unsigned char **senseBuffer,
+                       uint32_t startMsf,
+                       uint32_t endMsf,
+                       uint32_t blockSize,
+                       uint8_t subchannel)
 {
     unsigned char cmd_len = 12;
     char          cdb[]   = {PIONEER_READ_CDDA_MSF, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -961,7 +1077,9 @@ int ReadMediaSerialNumber(int fd, unsigned char **buffer, unsigned char **senseB
         return error;
 
     buffer_len =
-            (unsigned int)((*(*buffer + 0) << 24) + (*(*buffer + 1) << 16)) + (*(*buffer + 2) << 8) + *(*buffer + 3) +
+            (unsigned int)((*(*buffer + 0) << 24) + (*(*buffer + 1) << 16)) +
+            (*(*buffer + 2) << 8) +
+            *(*buffer + 3) +
             4;
 
     free(*buffer);

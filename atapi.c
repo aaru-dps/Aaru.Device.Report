@@ -45,8 +45,9 @@ int IdentifyPacket(int fd, unsigned char **buffer, AtaErrorRegistersCHS **errorR
 
     registers.command = ATA_IDENTIFY_PACKET_DEVICE;
 
-    int error = SendAtaCommandChs(fd, registers, errorRegisters, ATA_PROTOCOL_PIO_IN, ATA_TRANSFER_NONE, *buffer, 512,
-                                  0);
+    int
+            error =
+            SendAtaCommandChs(fd, registers, errorRegisters, ATA_PROTOCOL_PIO_IN, ATA_TRANSFER_NONE, *buffer, 512, 0);
 
     return error;
 }

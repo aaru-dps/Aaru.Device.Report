@@ -161,11 +161,12 @@ DecodedMode *DecodeMode10(unsigned char *modeResponse, uint8_t deviceType)
 
                 pageNo  = (uint8_t)(modeResponse[offset] & 0x3F);
                 subpage = modeResponse[offset + 1];
-                decodedMode->pageSizes[pageNo][subpage] = (size_t)((modeResponse[offset + 2] << 8) +
-                                                                   modeResponse[offset + 3] + 4);
+                decodedMode->pageSizes[pageNo][subpage] =
+                        (size_t)((modeResponse[offset + 2] << 8) + modeResponse[offset + 3] + 4);
                 decodedMode->Pages[pageNo][subpage]     = malloc(decodedMode->pageSizes[pageNo][subpage]);
                 memset(decodedMode->Pages[pageNo][subpage], 0, decodedMode->pageSizes[pageNo][subpage]);
-                memcpy(decodedMode->Pages[pageNo][subpage], modeResponse + offset,
+                memcpy(decodedMode->Pages[pageNo][subpage],
+                       modeResponse + offset,
                        decodedMode->pageSizes[pageNo][subpage]);
                 offset += decodedMode->pageSizes[pageNo][subpage];
             }
@@ -277,11 +278,12 @@ DecodedMode *DecodeMode6(unsigned char *modeResponse, uint8_t deviceType)
 
                 pageNo  = (uint8_t)(modeResponse[offset] & 0x3F);
                 subpage = modeResponse[offset + 1];
-                decodedMode->pageSizes[pageNo][subpage] = (size_t)((modeResponse[offset + 2] << 8) +
-                                                                   modeResponse[offset + 3] + 4);
+                decodedMode->pageSizes[pageNo][subpage] =
+                        (size_t)((modeResponse[offset + 2] << 8) + modeResponse[offset + 3] + 4);
                 decodedMode->Pages[pageNo][subpage]     = malloc(decodedMode->pageSizes[pageNo][subpage]);
                 memset(decodedMode->Pages[pageNo][subpage], 0, decodedMode->pageSizes[pageNo][subpage]);
-                memcpy(decodedMode->Pages[pageNo][subpage], modeResponse + offset,
+                memcpy(decodedMode->Pages[pageNo][subpage],
+                       modeResponse + offset,
                        decodedMode->pageSizes[pageNo][subpage]);
                 offset += decodedMode->pageSizes[pageNo][subpage];
             }

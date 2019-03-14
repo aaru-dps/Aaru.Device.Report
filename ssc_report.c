@@ -78,28 +78,46 @@ void SscReport(int fd, xmlTextWriterPtr xmlWriter)
         for(i = 0; i < dsh->count; i++)
         {
             xmlTextWriterStartElement(xmlWriter, BAD_CAST "SupportedDensity"); // <SupportedDensity>
-            xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "BitsPerMm", "%d",
+            xmlTextWriterWriteFormatElement(xmlWriter,
+                                            BAD_CAST "BitsPerMm",
+                                            "%d",
                                             (dsh->descriptors[i]->bitsPerMm[0] << 16) +
                                             (dsh->descriptors[i]->bitsPerMm[1] << 8) +
                                             dsh->descriptors[i]->bitsPerMm[2]);
-            xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Capacity", "%d",
+            xmlTextWriterWriteFormatElement(xmlWriter,
+                                            BAD_CAST "Capacity",
+                                            "%d",
                                             be32toh(dsh->descriptors[i]->capacity));
-            xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "DefaultDensity", "%s",
+            xmlTextWriterWriteFormatElement(xmlWriter,
+                                            BAD_CAST "DefaultDensity",
+                                            "%s",
                                             dsh->descriptors[i]->deflt ? "true" : "false");
-            xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Description", "%20s",
+            xmlTextWriterWriteFormatElement(xmlWriter,
+                                            BAD_CAST "Description",
+                                            "%20s",
                                             dsh->descriptors[i]->description);
-            xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Duplicate", "%s",
+            xmlTextWriterWriteFormatElement(xmlWriter,
+                                            BAD_CAST "Duplicate",
+                                            "%s",
                                             dsh->descriptors[i]->dup ? "true" : "false");
             xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Name", "%8s", dsh->descriptors[i]->densityName);
-            xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Organization", "%8s",
+            xmlTextWriterWriteFormatElement(xmlWriter,
+                                            BAD_CAST "Organization",
+                                            "%8s",
                                             dsh->descriptors[i]->organization);
             xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "PrimaryCode", "%d", dsh->descriptors[i]->primaryCode);
-            xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SecondaryCode", "%d",
+            xmlTextWriterWriteFormatElement(xmlWriter,
+                                            BAD_CAST "SecondaryCode",
+                                            "%d",
                                             dsh->descriptors[i]->secondaryCode);
             xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Tracks", "%d", be16toh(dsh->descriptors[i]->tracks));
-            xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Width", "%d",
+            xmlTextWriterWriteFormatElement(xmlWriter,
+                                            BAD_CAST "Width",
+                                            "%d",
                                             be16toh(dsh->descriptors[i]->mediaWidth));
-            xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Writable", "%s",
+            xmlTextWriterWriteFormatElement(xmlWriter,
+                                            BAD_CAST "Writable",
+                                            "%s",
                                             dsh->descriptors[i]->wrtok ? "true" : "false");
             xmlTextWriterEndElement(xmlWriter); // </SupportedDensity>
         }
@@ -118,14 +136,20 @@ void SscReport(int fd, xmlTextWriterPtr xmlWriter)
         for(i = 0; i < mtsh->count; i++)
         {
             xmlTextWriterStartElement(xmlWriter, BAD_CAST "SupportedMedia"); // <SupportedMedia>
-            xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Description", "%20s",
+            xmlTextWriterWriteFormatElement(xmlWriter,
+                                            BAD_CAST "Description",
+                                            "%20s",
                                             mtsh->descriptors[i]->description);
             xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Length", "%d", be16toh(mtsh->descriptors[i]->length));
             xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "MediumType", "%d", mtsh->descriptors[i]->mediumType);
             xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Name", "%8s", mtsh->descriptors[i]->densityName);
-            xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Organization", "%8s",
+            xmlTextWriterWriteFormatElement(xmlWriter,
+                                            BAD_CAST "Organization",
+                                            "%8s",
                                             mtsh->descriptors[i]->organization);
-            xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Width", "%d",
+            xmlTextWriterWriteFormatElement(xmlWriter,
+                                            BAD_CAST "Width",
+                                            "%d",
                                             be16toh(mtsh->descriptors[i]->mediaWidth));
             xmlTextWriterStartElement(xmlWriter, BAD_CAST "SupportedDensity"); // <SupportedDensity>
             // TODO: Density codes
@@ -197,7 +221,9 @@ void SscReport(int fd, xmlTextWriterPtr xmlWriter)
 
             xmlTextWriterStartElement(xmlWriter, BAD_CAST "SequentialMedia"); // <SequentialMedia>
 
-            xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "MediaIsRecognized", "%s",
+            xmlTextWriterWriteFormatElement(xmlWriter,
+                                            BAD_CAST "MediaIsRecognized",
+                                            "%s",
                                             mediaRecognized ? "true" : "false");
             xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Manufacturer", "%s", mediaManufacturer);
             xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "MediumTypeName", "%s", mediaName);
@@ -207,7 +233,9 @@ void SscReport(int fd, xmlTextWriterPtr xmlWriter)
             {
                 printf("Querying SCSI MODE SENSE (10)...\n");
                 error = ModeSense10(fd, &buffer, &sense, FALSE, TRUE, MODE_PAGE_DEFAULT, 0x3F, 0x00);
-                xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SupportsModeSense10", "%s",
+                xmlTextWriterWriteFormatElement(xmlWriter,
+                                                BAD_CAST "SupportsModeSense10",
+                                                "%s",
                                                 !error ? "true" : "false");
                 if(!error)
                 {
@@ -219,7 +247,9 @@ void SscReport(int fd, xmlTextWriterPtr xmlWriter)
 
                 printf("Querying SCSI MODE SENSE (6)...\n");
                 error = ModeSense6(fd, &buffer, &sense, FALSE, MODE_PAGE_DEFAULT, 0x00, 0x00);
-                xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SupportsModeSense6", "%s",
+                xmlTextWriterWriteFormatElement(xmlWriter,
+                                                BAD_CAST "SupportsModeSense6",
+                                                "%s",
                                                 !error ? "true" : "false");
                 if(!error)
                 {
@@ -234,7 +264,9 @@ void SscReport(int fd, xmlTextWriterPtr xmlWriter)
                 {
                     xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "MediumType", "%d", decMode->Header.MediumType);
                     if(decMode->Header.descriptorsLength > 0)
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Density", "%d",
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "Density",
+                                                        "%d",
                                                         decMode->Header.BlockDescriptors[0].Density);
                 }
 
@@ -249,31 +281,55 @@ void SscReport(int fd, xmlTextWriterPtr xmlWriter)
                     for(i = 0; i < dsh->count; i++)
                     {
                         xmlTextWriterStartElement(xmlWriter, BAD_CAST "SupportedDensity"); // <SupportedDensity>
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "BitsPerMm", "%d",
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "BitsPerMm",
+                                                        "%d",
                                                         (dsh->descriptors[i]->bitsPerMm[0] << 16) +
                                                         (dsh->descriptors[i]->bitsPerMm[1] << 8) +
                                                         dsh->descriptors[i]->bitsPerMm[2]);
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Capacity", "%d",
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "Capacity",
+                                                        "%d",
                                                         be32toh(dsh->descriptors[i]->capacity));
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "DefaultDensity", "%s",
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "DefaultDensity",
+                                                        "%s",
                                                         dsh->descriptors[i]->deflt ? "true" : "false");
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Description", "%20s",
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "Description",
+                                                        "%20s",
                                                         dsh->descriptors[i]->description);
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Duplicate", "%s",
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "Duplicate",
+                                                        "%s",
                                                         dsh->descriptors[i]->dup ? "true" : "false");
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Name", "%8s",
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "Name",
+                                                        "%8s",
                                                         dsh->descriptors[i]->densityName);
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Organization", "%8s",
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "Organization",
+                                                        "%8s",
                                                         dsh->descriptors[i]->organization);
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "PrimaryCode", "%d",
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "PrimaryCode",
+                                                        "%d",
                                                         dsh->descriptors[i]->primaryCode);
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SecondaryCode", "%d",
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "SecondaryCode",
+                                                        "%d",
                                                         dsh->descriptors[i]->secondaryCode);
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Tracks", "%d",
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "Tracks",
+                                                        "%d",
                                                         be16toh(dsh->descriptors[i]->tracks));
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Width", "%d",
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "Width",
+                                                        "%d",
                                                         be16toh(dsh->descriptors[i]->mediaWidth));
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Writable", "%s",
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "Writable",
+                                                        "%s",
                                                         dsh->descriptors[i]->wrtok ? "true" : "false");
                         xmlTextWriterEndElement(xmlWriter); // </SupportedDensity>
                     }
@@ -293,17 +349,29 @@ void SscReport(int fd, xmlTextWriterPtr xmlWriter)
                     for(i = 0; i < mtsh->count; i++)
                     {
                         xmlTextWriterStartElement(xmlWriter, BAD_CAST "SupportedMedia"); // <SupportedMedia>
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Description", "%20s",
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "Description",
+                                                        "%20s",
                                                         mtsh->descriptors[i]->description);
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Length", "%d",
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "Length",
+                                                        "%d",
                                                         be16toh(mtsh->descriptors[i]->length));
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "MediumType", "%d",
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "MediumType",
+                                                        "%d",
                                                         mtsh->descriptors[i]->mediumType);
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Name", "%8s",
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "Name",
+                                                        "%8s",
                                                         mtsh->descriptors[i]->densityName);
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Organization", "%8s",
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "Organization",
+                                                        "%8s",
                                                         mtsh->descriptors[i]->organization);
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Width", "%d",
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "Width",
+                                                        "%d",
                                                         be16toh(mtsh->descriptors[i]->mediaWidth));
                         xmlTextWriterStartElement(xmlWriter, BAD_CAST "SupportedDensity"); // <SupportedDensity>
                         // TODO: Density codes
@@ -314,7 +382,9 @@ void SscReport(int fd, xmlTextWriterPtr xmlWriter)
                 }
 
                 printf("Trying SCSI READ MEDIA SERIAL NUMBER...\n");
-                xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SupportsRead", "%s",
+                xmlTextWriterWriteFormatElement(xmlWriter,
+                                                BAD_CAST "SupportsRead",
+                                                "%s",
                                                 !ReadMediaSerialNumber(fd, &buffer, &sense) ? "true" : "false");
             }
 

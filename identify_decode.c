@@ -1431,20 +1431,13 @@ char *DecodeDeviceFormFactor(uint16_t formfactor)
 {
     switch(formfactor)
     {
-        case 0:
-            return "NotReported";
-        case 1:
-            return "FiveAndQuarter";
-        case 2:
-            return "ThreeAndHalf";
-        case 3:
-            return "TwoAndHalf";
-        case 4:
-            return "OnePointEight";
-        case 5:
-            return "LessThanOnePointEight";
-        default:
-            return NULL;
+        case 0:return "NotReported";
+        case 1:return "FiveAndQuarter";
+        case 2:return "ThreeAndHalf";
+        case 3:return "TwoAndHalf";
+        case 4:return "OnePointEight";
+        case 5:return "LessThanOnePointEight";
+        default:return NULL;
     }
 }
 
@@ -2280,16 +2273,11 @@ char *DecodeSpecificConfiguration(uint16_t configuration)
 {
     switch(configuration)
     {
-        case 0x37C8:
-            return "RequiresSetIncompleteResponse";
-        case 0x738C:
-            return "RequiresSetCompleteResponse";
-        case 0x8C73:
-            return "NotRequiresSetIncompleteResponse";
-        case 0xC837:
-            return "NotRequiresSetCompleteResponse";
-        default:
-            return NULL;
+        case 0x37C8:return "RequiresSetIncompleteResponse";
+        case 0x738C:return "RequiresSetCompleteResponse";
+        case 0x8C73:return "NotRequiresSetIncompleteResponse";
+        case 0xC837:return "NotRequiresSetCompleteResponse";
+        default:return NULL;
     }
 }
 

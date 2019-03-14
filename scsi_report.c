@@ -94,7 +94,9 @@ void ScsiReport(int fd, xmlTextWriterPtr xmlWriter)
     }
 
     xmlTextWriterStartElement(xmlWriter, BAD_CAST DIC_SCSI_INQUIRY_ELEMENT); // <Inquiry>
-    xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "AccessControlCoordinator", "%s",
+    xmlTextWriterWriteFormatElement(xmlWriter,
+                                    BAD_CAST "AccessControlCoordinator",
+                                    "%s",
                                     inquiry->ACC ? "true" : "false");
     xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "ACKRequests", "%s", inquiry->ACKREQQ ? "true" : "false");
     xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Address16", "%s", inquiry->Addr16 ? "true" : "false");
@@ -113,9 +115,13 @@ void ScsiReport(int fd, xmlTextWriterPtr xmlWriter)
     xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "MediumChanger", "%s", inquiry->MChngr ? "true" : "false");
     xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "MultiPortDevice", "%s", inquiry->MultiP ? "true" : "false");
     xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "NormalACA", "%s", inquiry->NormACA ? "true" : "false");
-    xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "PeripheralDeviceType", "%s",
+    xmlTextWriterWriteFormatElement(xmlWriter,
+                                    BAD_CAST "PeripheralDeviceType",
+                                    "%s",
                                     DecodePeripheralDeviceType(inquiry->PeripheralDeviceType));
-    xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "PeripheralQualifier", "%s",
+    xmlTextWriterWriteFormatElement(xmlWriter,
+                                    BAD_CAST "PeripheralQualifier",
+                                    "%s",
                                     DecodePeripheralQualifier(inquiry->PeripheralQualifier));
     tmpString = malloc(17);
     memset(tmpString, 0, 17);
@@ -129,17 +135,23 @@ void ScsiReport(int fd, xmlTextWriterPtr xmlWriter)
     free(tmpString);
     xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Protection", "%s", inquiry->Protect ? "true" : "false");
     xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "QAS", "%s", inquiry->QAS ? "true" : "false");
-    xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "RelativeAddressing", "%s",
+    xmlTextWriterWriteFormatElement(xmlWriter,
+                                    BAD_CAST "RelativeAddressing",
+                                    "%s",
                                     inquiry->RelAddr ? "true" : "false");
     xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Removable", "%s", inquiry->RMB ? "true" : "false");
     xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "ResponseDataFormat", "%d", inquiry->ResponseDataFormat);
     xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SoftReset", "%s", inquiry->SftRe ? "true" : "false");
     xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SPIClocking", "%s", DecodeSPIClocking(inquiry->Clocking));
-    xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "StorageArrayController", "%s",
+    xmlTextWriterWriteFormatElement(xmlWriter,
+                                    BAD_CAST "StorageArrayController",
+                                    "%s",
                                     inquiry->SCCS ? "true" : "false");
     xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SyncTransfer", "%s", inquiry->Sync ? "true" : "false");
     xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "TaggedCommandQueue", "%s", inquiry->CmdQue ? "true" : "false");
-    xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "TerminateTaskSupported", "%s",
+    xmlTextWriterWriteFormatElement(xmlWriter,
+                                    BAD_CAST "TerminateTaskSupported",
+                                    "%s",
                                     inquiry->TrmTsk ? "true" : "false");
     xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "ThirdPartyCopy", "%s", inquiry->ThreePC ? "true" : "false");
     xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "TranferDisable", "%s", inquiry->TranDis ? "true" : "false");
@@ -221,7 +233,9 @@ void ScsiReport(int fd, xmlTextWriterPtr xmlWriter)
 
     xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SupportsModeSense6", "%s", supportsMode6 ? "true" : "false");
     xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SupportsModeSense10", "%s", supportsMode10 ? "true" : "false");
-    xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SupportsModeSubpages", "%s",
+    xmlTextWriterWriteFormatElement(xmlWriter,
+                                    BAD_CAST "SupportsModeSubpages",
+                                    "%s",
                                     supportsModeSubpages ? "true" : "false");
 
     if(supportsMode6)
@@ -234,7 +248,9 @@ void ScsiReport(int fd, xmlTextWriterPtr xmlWriter)
     if(supportsMode10)
     {
         xmlTextWriterStartElement(xmlWriter, BAD_CAST "ModeSense10Data");
-        xmlTextWriterWriteBase64(xmlWriter, mode10Response, 0,
+        xmlTextWriterWriteBase64(xmlWriter,
+                                 mode10Response,
+                                 0,
                                  (*(mode10Response + 0) << 8) + *(mode10Response + 1) + 2);
         xmlTextWriterEndElement(xmlWriter);
     }
@@ -252,15 +268,23 @@ void ScsiReport(int fd, xmlTextWriterPtr xmlWriter)
         int page, subpage;
 
         xmlTextWriterStartElement(xmlWriter, BAD_CAST "ModeSense"); // <ModeSense>
-        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "BlankCheckEnabled", "%s",
+        xmlTextWriterWriteFormatElement(xmlWriter,
+                                        BAD_CAST "BlankCheckEnabled",
+                                        "%s",
                                         decMode->Header.EBC ? "true" : "false");
-        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "DPOandFUA", "%s",
+        xmlTextWriterWriteFormatElement(xmlWriter,
+                                        BAD_CAST "DPOandFUA",
+                                        "%s",
                                         decMode->Header.DPOFUA ? "true" : "false");
-        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "WriteProtected", "%s",
+        xmlTextWriterWriteFormatElement(xmlWriter,
+                                        BAD_CAST "WriteProtected",
+                                        "%s",
                                         decMode->Header.WriteProtected ? "true" : "false");
 
         if(decMode->Header.BufferedMode > 0)
-            xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "BlankCheckEnabled", "%d",
+            xmlTextWriterWriteFormatElement(xmlWriter,
+                                            BAD_CAST "BlankCheckEnabled",
+                                            "%d",
                                             decMode->Header.BufferedMode);
         if(decMode->Header.Speed > 0)
             xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Speed", "%d", decMode->Header.Speed);
@@ -274,7 +298,9 @@ void ScsiReport(int fd, xmlTextWriterPtr xmlWriter)
                     xmlTextWriterStartElement(xmlWriter, BAD_CAST "modePageType");
                     xmlTextWriterWriteFormatAttribute(xmlWriter, BAD_CAST "page", "%d", page);
                     xmlTextWriterWriteFormatAttribute(xmlWriter, BAD_CAST "subpage", "%d", subpage);
-                    xmlTextWriterWriteBase64(xmlWriter, decMode->Pages[page][subpage], 0,
+                    xmlTextWriterWriteBase64(xmlWriter,
+                                             decMode->Pages[page][subpage],
+                                             0,
                                              decMode->pageSizes[page][subpage]);
                     xmlTextWriterEndElement(xmlWriter);
 
@@ -361,7 +387,9 @@ void ScsiReport(int fd, xmlTextWriterPtr xmlWriter)
 
                     xmlTextWriterStartElement(xmlWriter, BAD_CAST "testedMediaType"); // <testedMediaType>
 
-                    xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "MediaIsRecognized", "%s",
+                    xmlTextWriterWriteFormatElement(xmlWriter,
+                                                    BAD_CAST "MediaIsRecognized",
+                                                    "%s",
                                                     mediaRecognized ? "true" : "false");
                     xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Manufacturer", "%s", mediaManufacturer);
                     xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "MediumTypeName", "%s", mediaName);
@@ -377,11 +405,14 @@ void ScsiReport(int fd, xmlTextWriterPtr xmlWriter)
                         if(!error)
                         {
                             xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SupportsReadCapacity", "%s", "true");
-                            blocks    =
-                                    (uint64_t)(buffer[0] << 24) + (buffer[1] << 16) + (buffer[2] << 8) + (buffer[3]) +
+                            blocks =
+                                    (uint64_t)(buffer[0] << 24) +
+                                    (buffer[1] << 16) +
+                                    (buffer[2] << 8) +
+                                    (buffer[3]) +
                                     1;
-                            blockSize = (uint32_t)((buffer[4] << 24) + (buffer[5] << 16) + (buffer[6] << 8) +
-                                                   (buffer[7]));
+                            blockSize =
+                                    (uint32_t)((buffer[4] << 24) + (buffer[5] << 16) + (buffer[6] << 8) + (buffer[7]));
                         }
 
                         printf("Querying SCSI READ CAPACITY (16)...\n");
@@ -393,8 +424,11 @@ void ScsiReport(int fd, xmlTextWriterPtr xmlWriter)
                             blocks <<= 32;
                             blocks += (buffer[4] << 24) + (buffer[5] << 16) + (buffer[6] << 8) + (buffer[7]);
                             blocks++;
-                            blockSize = (uint32_t)((buffer[8] << 24) + (buffer[9] << 16) + (buffer[10] << 8) +
-                                                   (buffer[11]));
+                            blockSize =
+                                    (uint32_t)((buffer[8] << 24) +
+                                               (buffer[9] << 16) +
+                                               (buffer[10] << 8) +
+                                               (buffer[11]));
                         }
 
                         if(blocks != 0)
@@ -408,12 +442,16 @@ void ScsiReport(int fd, xmlTextWriterPtr xmlWriter)
 
                         printf("Querying SCSI MODE SENSE (10)...\n");
                         error = ModeSense10(fd, &mode10Response, &sense, FALSE, TRUE, MODE_PAGE_DEFAULT, 0x3F, 0x00);
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SupportsModeSense10", "%s",
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "SupportsModeSense10",
+                                                        "%s",
                                                         !error ? "true" : "false");
                         if(!error)
                         {
                             xmlTextWriterStartElement(xmlWriter, BAD_CAST "ModeSense10Data");
-                            xmlTextWriterWriteBase64(xmlWriter, mode10Response, 0,
+                            xmlTextWriterWriteBase64(xmlWriter,
+                                                     mode10Response,
+                                                     0,
                                                      (*(mode10Response + 0) << 8) + *(mode10Response + 1) + 2);
                             xmlTextWriterEndElement(xmlWriter);
                             decMode = DecodeMode10(mode10Response, inquiry->PeripheralDeviceType);
@@ -421,7 +459,9 @@ void ScsiReport(int fd, xmlTextWriterPtr xmlWriter)
 
                         printf("Querying SCSI MODE SENSE (6)...\n");
                         error = ModeSense6(fd, &mode6Response, &sense, FALSE, MODE_PAGE_DEFAULT, 0x00, 0x00);
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SupportsModeSense6", "%s",
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "SupportsModeSense6",
+                                                        "%s",
                                                         !error ? "true" : "false");
                         if(!error)
                         {
@@ -434,32 +474,76 @@ void ScsiReport(int fd, xmlTextWriterPtr xmlWriter)
 
                         if(decMode->decoded)
                         {
-                            xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "MediumType", "%d",
+                            xmlTextWriterWriteFormatElement(xmlWriter,
+                                                            BAD_CAST "MediumType",
+                                                            "%d",
                                                             decMode->Header.MediumType);
                             if(decMode->Header.descriptorsLength > 0)
-                                xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Density", "%d",
+                                xmlTextWriterWriteFormatElement(xmlWriter,
+                                                                BAD_CAST "Density",
+                                                                "%d",
                                                                 decMode->Header.BlockDescriptors[0].Density);
                         }
 
                         printf("Trying SCSI READ (6)...\n");
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SupportsRead", "%s",
-                                                        !Read6(fd, &buffer, &sense, 0, blockSize, 1) ? "true"
-                                                                                                     : "false");
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "SupportsRead",
+                                                        "%s",
+                                                        !Read6(fd, &buffer, &sense, 0, blockSize, 1)
+                                                        ? "true"
+                                                        : "false");
 
                         printf("Trying SCSI READ (10)...\n");
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SupportsRead10", "%s",
-                                                        !Read10(fd, &buffer, &sense, 0, FALSE, TRUE, FALSE, FALSE, 0,
-                                                                blockSize, 0, 1) ? "true" : "false");
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "SupportsRead10",
+                                                        "%s",
+                                                        !Read10(fd,
+                                                                &buffer,
+                                                                &sense,
+                                                                0,
+                                                                FALSE,
+                                                                TRUE,
+                                                                FALSE,
+                                                                FALSE,
+                                                                0,
+                                                                blockSize,
+                                                                0,
+                                                                1) ? "true" : "false");
 
                         printf("Trying SCSI READ (12)...\n");
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SupportsRead12", "%s",
-                                                        !Read12(fd, &buffer, &sense, 0, FALSE, TRUE, FALSE, FALSE, 0,
-                                                                blockSize, 0, 1, FALSE) ? "true" : "false");
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "SupportsRead12",
+                                                        "%s",
+                                                        !Read12(fd,
+                                                                &buffer,
+                                                                &sense,
+                                                                0,
+                                                                FALSE,
+                                                                TRUE,
+                                                                FALSE,
+                                                                FALSE,
+                                                                0,
+                                                                blockSize,
+                                                                0,
+                                                                1,
+                                                                FALSE) ? "true" : "false");
 
                         printf("Trying SCSI READ (16)...\n");
-                        xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SupportsRead16", "%s",
-                                                        !Read16(fd, &buffer, &sense, 0, FALSE, TRUE, FALSE, 0,
-                                                                blockSize, 0, 1, FALSE) ? "true" : "false");
+                        xmlTextWriterWriteFormatElement(xmlWriter,
+                                                        BAD_CAST "SupportsRead16",
+                                                        "%s",
+                                                        !Read16(fd,
+                                                                &buffer,
+                                                                &sense,
+                                                                0,
+                                                                FALSE,
+                                                                TRUE,
+                                                                FALSE,
+                                                                0,
+                                                                blockSize,
+                                                                0,
+                                                                1,
+                                                                FALSE) ? "true" : "false");
 
                         uint32_t longBlockSize = blockSize;
 
@@ -467,7 +551,9 @@ void ScsiReport(int fd, xmlTextWriterPtr xmlWriter)
 
                         printf("Trying SCSI READ LONG (10)...\n");
                         ReadLong10(fd, &buffer, &sense, FALSE, FALSE, 0, 0xFFFF);
-                        if((sense[0] == 0x70 || sense[0] == 0x71) && (sense[2] & 0x0F) == 0x05 && sense[12] == 0x24 &&
+                        if((sense[0] == 0x70 || sense[0] == 0x71) &&
+                           (sense[2] & 0x0F) == 0x05 &&
+                           sense[12] == 0x24 &&
                            sense[13] == 0x00)
                         {
                             xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SupportsReadLong", "%s", "true");
@@ -476,14 +562,18 @@ void ScsiReport(int fd, xmlTextWriterPtr xmlWriter)
                             {
                                 uint32_t information = (sense[3] << 24) + (sense[4] << 16) + (sense[5] << 8) + sense[6];
                                 longBlockSize        = 0xFFFF - (information & 0xFFFF);
-                                xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "LongBlockSize", "%d",
+                                xmlTextWriterWriteFormatElement(xmlWriter,
+                                                                BAD_CAST "LongBlockSize",
+                                                                "%d",
                                                                 longBlockSize);
                             }
                         }
 
                         printf("Trying SCSI READ LONG (16)...\n");
                         ReadLong16(fd, &buffer, &sense, FALSE, 0, 0xFFFF);
-                        if((sense[0] == 0x70 || sense[0] == 0x71) && (sense[2] & 0x0F) == 0x05 && sense[12] == 0x24 &&
+                        if((sense[0] == 0x70 || sense[0] == 0x71) &&
+                           (sense[2] & 0x0F) == 0x05 &&
+                           sense[12] == 0x24 &&
                            sense[13] == 0x00)
                             xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SupportsReadLong16", "%s", "true");
 
@@ -561,7 +651,9 @@ void ScsiReport(int fd, xmlTextWriterPtr xmlWriter)
                                 printf("Drive supports SCSI READ LONG but I cannot find the correct size. Do you want me to try? (This can take hours) (Y/N): ");
                                 scanf("%c", &user_response);
                                 printf("\n");
-                            }while(user_response != 'Y' && user_response != 'y' && user_response != 'N' &&
+                            }while(user_response != 'Y' &&
+                                   user_response != 'y' &&
+                                   user_response != 'N' &&
                                    user_response != 'n');
 
                             if(user_response == 'Y' || user_response == 'y')
@@ -635,7 +727,9 @@ void ScsiReport(int fd, xmlTextWriterPtr xmlWriter)
             {
                 xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SupportsModeSense10", "%s", "true");
                 xmlTextWriterStartElement(xmlWriter, BAD_CAST "ModeSense10Data");
-                xmlTextWriterWriteBase64(xmlWriter, mode10Response, 0,
+                xmlTextWriterWriteBase64(xmlWriter,
+                                         mode10Response,
+                                         0,
                                          (*(mode10Response + 0) << 8) + *(mode10Response + 1) + 2);
                 xmlTextWriterEndElement(xmlWriter);
             }
@@ -652,27 +746,68 @@ void ScsiReport(int fd, xmlTextWriterPtr xmlWriter)
             {
                 xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "MediumType", "%d", decMode->Header.MediumType);
                 if(decMode->Header.descriptorsLength > 0)
-                    xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "Density", "%d",
+                    xmlTextWriterWriteFormatElement(xmlWriter,
+                                                    BAD_CAST "Density",
+                                                    "%d",
                                                     decMode->Header.BlockDescriptors[0].Density);
             }
 
             printf("Trying SCSI READ (6)...\n");
-            xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SupportsRead", "%s",
+            xmlTextWriterWriteFormatElement(xmlWriter,
+                                            BAD_CAST "SupportsRead",
+                                            "%s",
                                             !Read6(fd, &buffer, &sense, 0, blockSize, 1) ? "true" : "false");
 
             printf("Trying SCSI READ (10)...\n");
-            xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SupportsRead10", "%s",
-                                            !Read10(fd, &buffer, &sense, 0, FALSE, TRUE, FALSE, FALSE, 0, blockSize, 0,
+            xmlTextWriterWriteFormatElement(xmlWriter,
+                                            BAD_CAST "SupportsRead10",
+                                            "%s",
+                                            !Read10(fd,
+                                                    &buffer,
+                                                    &sense,
+                                                    0,
+                                                    FALSE,
+                                                    TRUE,
+                                                    FALSE,
+                                                    FALSE,
+                                                    0,
+                                                    blockSize,
+                                                    0,
                                                     1) ? "true" : "false");
 
             printf("Trying SCSI READ (12)...\n");
-            xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SupportsRead12", "%s",
-                                            !Read12(fd, &buffer, &sense, 0, FALSE, TRUE, FALSE, FALSE, 0, blockSize, 0,
-                                                    1, FALSE) ? "true" : "false");
+            xmlTextWriterWriteFormatElement(xmlWriter,
+                                            BAD_CAST "SupportsRead12",
+                                            "%s",
+                                            !Read12(fd,
+                                                    &buffer,
+                                                    &sense,
+                                                    0,
+                                                    FALSE,
+                                                    TRUE,
+                                                    FALSE,
+                                                    FALSE,
+                                                    0,
+                                                    blockSize,
+                                                    0,
+                                                    1,
+                                                    FALSE) ? "true" : "false");
 
             printf("Trying SCSI READ (16)...\n");
-            xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SupportsRead16", "%s",
-                                            !Read16(fd, &buffer, &sense, 0, FALSE, TRUE, FALSE, 0, blockSize, 0, 1,
+            xmlTextWriterWriteFormatElement(xmlWriter,
+                                            BAD_CAST "SupportsRead16",
+                                            "%s",
+                                            !Read16(fd,
+                                                    &buffer,
+                                                    &sense,
+                                                    0,
+                                                    FALSE,
+                                                    TRUE,
+                                                    FALSE,
+                                                    0,
+                                                    blockSize,
+                                                    0,
+                                                    1,
                                                     FALSE) ? "true" : "false");
 
             uint32_t longBlockSize = blockSize;
@@ -681,7 +816,9 @@ void ScsiReport(int fd, xmlTextWriterPtr xmlWriter)
 
             printf("Trying SCSI READ LONG (10)...\n");
             ReadLong10(fd, &buffer, &sense, FALSE, FALSE, 0, 0xFFFF);
-            if((sense[0] == 0x70 || sense[0] == 0x71) && (sense[2] & 0x0F) == 0x05 && sense[12] == 0x24 &&
+            if((sense[0] == 0x70 || sense[0] == 0x71) &&
+               (sense[2] & 0x0F) == 0x05 &&
+               sense[12] == 0x24 &&
                sense[13] == 0x00)
             {
                 xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SupportsReadLong", "%s", "true");
@@ -696,7 +833,9 @@ void ScsiReport(int fd, xmlTextWriterPtr xmlWriter)
 
             printf("Trying SCSI READ LONG (16)...\n");
             ReadLong16(fd, &buffer, &sense, FALSE, 0, 0xFFFF);
-            if((sense[0] == 0x70 || sense[0] == 0x71) && (sense[2] & 0x0F) == 0x05 && sense[12] == 0x24 &&
+            if((sense[0] == 0x70 || sense[0] == 0x71) &&
+               (sense[2] & 0x0F) == 0x05 &&
+               sense[12] == 0x24 &&
                sense[13] == 0x00)
                 xmlTextWriterWriteFormatElement(xmlWriter, BAD_CAST "SupportsReadLong16", "%s", "true");
 

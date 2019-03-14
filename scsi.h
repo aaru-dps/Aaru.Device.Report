@@ -33,8 +33,13 @@ Copyright © 2011-2019 Natalia Portillo
 #ifndef DISCIMAGECHEF_DEVICE_REPORT_SCSI_H
 #define DISCIMAGECHEF_DEVICE_REPORT_SCSI_H
 
-int SendScsiCommand(int fd, void *cdb, unsigned char cdb_len, unsigned char *buffer, unsigned int buffer_len,
-                    unsigned char **senseBuffer, int direction);
+int SendScsiCommand(int fd,
+                    void *cdb,
+                    unsigned char cdb_len,
+                    unsigned char *buffer,
+                    unsigned int buffer_len,
+                    unsigned char **senseBuffer,
+                    int direction);
 
 int Inquiry(int fd, unsigned char **buffer, unsigned char **senseBuffer);
 
@@ -52,8 +57,14 @@ int StartUnit(int fd, unsigned char **senseBuffer);
 
 int StopUnit(int fd, unsigned char **senseBuffer);
 
-int StartStopUnit(int fd, unsigned char **senseBuffer, int immediate, uint8_t formatLayer, uint8_t powerConditions,
-                  int changeFormatLayer, int loadEject, int start);
+int StartStopUnit(int fd,
+                  unsigned char **senseBuffer,
+                  int immediate,
+                  uint8_t formatLayer,
+                  uint8_t powerConditions,
+                  int changeFormatLayer,
+                  int loadEject,
+                  int start);
 
 int SpcPreventMediumRemoval(int fd, unsigned char **senseBuffer);
 
@@ -67,33 +78,87 @@ int Unload(int fd, unsigned char **senseBuffer);
 
 int LoadUnload(int fd, unsigned char **senseBuffer, int immediate, int load, int retense, int endOfTape, int hold);
 
-int
-ModeSense6(int fd, unsigned char **buffer, unsigned char **senseBuffer, int DBD, uint8_t pageControl, uint8_t pageCode,
-           uint8_t subPageCode);
+int ModeSense6(int fd,
+               unsigned char **buffer,
+               unsigned char **senseBuffer,
+               int DBD,
+               uint8_t pageControl,
+               uint8_t pageCode,
+               uint8_t subPageCode);
 
-int ModeSense10(int fd, unsigned char **buffer, unsigned char **senseBuffer, int LLBAA, int DBD, uint8_t pageContorl,
-                uint8_t pageCode, uint8_t subPageCode);
+int ModeSense10(int fd,
+                unsigned char **buffer,
+                unsigned char **senseBuffer,
+                int LLBAA,
+                int DBD,
+                uint8_t pageContorl,
+                uint8_t pageCode,
+                uint8_t subPageCode);
 
 int ReadCapacity(int fd, unsigned char **buffer, unsigned char **senseBuffer, int RelAddr, uint32_t address, int PMI);
 
 int ReadCapacity16(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint64_t address, int PMI);
 
-int Read6(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint32_t lba, uint32_t blockSize,
+int Read6(int fd,
+          unsigned char **buffer,
+          unsigned char **senseBuffer,
+          uint32_t lba,
+          uint32_t blockSize,
           uint8_t transferLength);
 
-int Read10(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint8_t rdprotect, int dpo, int fua, int fuaNv,
-           int relAddr, uint32_t lba, uint32_t blockSize, uint8_t groupNumber, uint16_t transferLength);
+int Read10(int fd,
+           unsigned char **buffer,
+           unsigned char **senseBuffer,
+           uint8_t rdprotect,
+           int dpo,
+           int fua,
+           int fuaNv,
+           int relAddr,
+           uint32_t lba,
+           uint32_t blockSize,
+           uint8_t groupNumber,
+           uint16_t transferLength);
 
-int Read12(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint8_t rdprotect, int dpo, int fua, int fuaNv,
-           int relAddr, uint32_t lba, uint32_t blockSize, uint8_t groupNumber, uint32_t transferLength, int streaming);
+int Read12(int fd,
+           unsigned char **buffer,
+           unsigned char **senseBuffer,
+           uint8_t rdprotect,
+           int dpo,
+           int fua,
+           int fuaNv,
+           int relAddr,
+           uint32_t lba,
+           uint32_t blockSize,
+           uint8_t groupNumber,
+           uint32_t transferLength,
+           int streaming);
 
-int Read16(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint8_t rdprotect, int dpo, int fua, int fuaNv,
-           uint64_t lba, uint32_t blockSize, uint8_t groupNumber, uint32_t transferLength, int streaming);
+int Read16(int fd,
+           unsigned char **buffer,
+           unsigned char **senseBuffer,
+           uint8_t rdprotect,
+           int dpo,
+           int fua,
+           int fuaNv,
+           uint64_t lba,
+           uint32_t blockSize,
+           uint8_t groupNumber,
+           uint32_t transferLength,
+           int streaming);
 
-int ReadLong10(int fd, unsigned char **buffer, unsigned char **senseBuffer, int correct, int relAddr, uint32_t lba,
+int ReadLong10(int fd,
+               unsigned char **buffer,
+               unsigned char **senseBuffer,
+               int correct,
+               int relAddr,
+               uint32_t lba,
                uint16_t transferBytes);
 
-int ReadLong16(int fd, unsigned char **buffer, unsigned char **senseBuffer, int correct, uint64_t lba,
+int ReadLong16(int fd,
+               unsigned char **buffer,
+               unsigned char **senseBuffer,
+               int correct,
+               uint64_t lba,
                uint32_t transferBytes);
 
 int Seek6(int fd, unsigned char **senseBuffer, uint32_t lba);
@@ -102,34 +167,85 @@ int Seek10(int fd, unsigned char **senseBuffer, uint32_t lba);
 
 int TestUnitReady(int fd, unsigned char **senseBuffer);
 
-int GetConfiguration(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint16_t startingFeatureNumber,
+int GetConfiguration(int fd,
+                     unsigned char **buffer,
+                     unsigned char **senseBuffer,
+                     uint16_t startingFeatureNumber,
                      uint8_t RT);
 
-int ReadTocPmaAtip(int fd, unsigned char **buffer, unsigned char **senseBuffer, int MSF, uint8_t format,
+int ReadTocPmaAtip(int fd,
+                   unsigned char **buffer,
+                   unsigned char **senseBuffer,
+                   int MSF,
+                   uint8_t format,
                    uint8_t trackSessionNumber);
 
-int ReadDiscStructure(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint8_t mediaType, uint32_t address,
-                      uint8_t layerNumber, uint8_t format, uint8_t AGID);
+int ReadDiscStructure(int fd,
+                      unsigned char **buffer,
+                      unsigned char **senseBuffer,
+                      uint8_t mediaType,
+                      uint32_t address,
+                      uint8_t layerNumber,
+                      uint8_t format,
+                      uint8_t AGID);
 
-int ReadCd(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint32_t lba, uint32_t blockSize,
-           uint32_t transferLength, uint8_t expectedSectorType, int DAP, int relAddr, int sync, uint8_t headerCodes,
-           int userData, int edcEcc, uint8_t C2Error, uint8_t subchannel);
+int ReadCd(int fd,
+           unsigned char **buffer,
+           unsigned char **senseBuffer,
+           uint32_t lba,
+           uint32_t blockSize,
+           uint32_t transferLength,
+           uint8_t expectedSectorType,
+           int DAP,
+           int relAddr,
+           int sync,
+           uint8_t headerCodes,
+           int userData,
+           int edcEcc,
+           uint8_t C2Error,
+           uint8_t subchannel);
 
-int ReadCdMsf(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint32_t startMsf, uint32_t endMsf,
-              uint32_t blockSize, uint8_t expectedSectorType, int DAP, int sync, uint8_t headerCodes, int userData,
-              int edcEcc, uint8_t C2Error, uint8_t subchannel);
+int ReadCdMsf(int fd,
+              unsigned char **buffer,
+              unsigned char **senseBuffer,
+              uint32_t startMsf,
+              uint32_t endMsf,
+              uint32_t blockSize,
+              uint8_t expectedSectorType,
+              int DAP,
+              int sync,
+              uint8_t headerCodes,
+              int userData,
+              int edcEcc,
+              uint8_t C2Error,
+              uint8_t subchannel);
 
-int PlextorReadCdDa(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint32_t lba, uint32_t blockSize,
-                    uint32_t transferLength, uint8_t subchannel);
+int PlextorReadCdDa(int fd,
+                    unsigned char **buffer,
+                    unsigned char **senseBuffer,
+                    uint32_t lba,
+                    uint32_t blockSize,
+                    uint32_t transferLength,
+                    uint8_t subchannel);
 
 int
 PlextorReadRawDvd(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint32_t lba, uint32_t transferLength);
 
-int PioneerReadCdDa(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint32_t lba, uint32_t blockSize,
-                    uint32_t transferLength, uint8_t subchannel);
+int PioneerReadCdDa(int fd,
+                    unsigned char **buffer,
+                    unsigned char **senseBuffer,
+                    uint32_t lba,
+                    uint32_t blockSize,
+                    uint32_t transferLength,
+                    uint8_t subchannel);
 
-int PioneerReadCdDaMsf(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint32_t startMsf, uint32_t endMsf,
-                       uint32_t blockSize, uint8_t subchannel);
+int PioneerReadCdDaMsf(int fd,
+                       unsigned char **buffer,
+                       unsigned char **senseBuffer,
+                       uint32_t startMsf,
+                       uint32_t endMsf,
+                       uint32_t blockSize,
+                       uint8_t subchannel);
 
 int NecReadCdDa(int fd, unsigned char **buffer, unsigned char **senseBuffer, uint32_t lba, uint32_t transferLength);
 
