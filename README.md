@@ -2,7 +2,7 @@ DiscImageChef v4.5.99.1693
 
 Disc Image Chef (because "swiss-army-knife" is used too much)
 
-Copyright © 2011-2019 Natalia Portillo <claunia@claunia.com>
+Copyright © 2011-2020 Natalia Portillo <claunia@claunia.com>
 
 *DiscImageChef.Device.Report* is a tool made in C to create device reports.
 
