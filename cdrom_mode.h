@@ -1,11 +1,11 @@
 /***************************************************************************
-The Disc Image Chef
+Aaru Data Preservation Suite
 ----------------------------------------------------------------------------
 
 Filename       : cdrom_mode.h
 Author(s)      : Natalia Portillo
 
-Component      : DiscImageChef.Device.Report
+Component      : Aaru.Device.Report
 
 --[ Description ] ----------------------------------------------------------
 
@@ -30,8 +30,8 @@ Contains definitions for CD-ROM MODE PAGE (2Ah).
 Copyright © 2011-2020 Natalia Portillo
 ****************************************************************************/
 
-#ifndef DISCIMAGECHEF_DEVICE_REPORT_CDROM_MODE_H
-#define DISCIMAGECHEF_DEVICE_REPORT_CDROM_MODE_H
+#ifndef AARU_DEVICE_REPORT_CDROM_MODE_H
+#define AARU_DEVICE_REPORT_CDROM_MODE_H
 
 #pragma pack(push, 1)
 typedef struct
@@ -139,4 +139,4 @@ typedef struct
 } ModePage_2A;
 #pragma pack(pop)
 
-#endif //DISCIMAGECHEF_DEVICE_REPORT_CDROM_MODE_H
+#endif //AARU_DEVICE_REPORT_CDROM_MODE_H

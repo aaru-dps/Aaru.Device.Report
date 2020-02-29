@@ -1,11 +1,11 @@
 /***************************************************************************
-The Disc Image Chef
+Aaru Data Preservation Suite
 ----------------------------------------------------------------------------
 
 Filename       : ata.h
 Author(s)      : Natalia Portillo
 
-Component      : DiscImageChef.Device.Report
+Component      : Aaru.Device.Report
 
 --[ Description ] ----------------------------------------------------------
 
@@ -30,8 +30,8 @@ Contains ATA definitions.
 Copyright © 2011-2020 Natalia Portillo
 ****************************************************************************/
 
-#ifndef DISCIMAGECHEF_DEVICE_REPORT_ATA_H
-#define DISCIMAGECHEF_DEVICE_REPORT_ATA_H
+#ifndef AARU_DEVICE_REPORT_ATA_H
+#define AARU_DEVICE_REPORT_ATA_H
 
 #pragma pack(1)
 typedef struct
@@ -963,4 +963,4 @@ ReadDmaLba48(int fd, unsigned char **buffer, AtaErrorRegistersLBA48 **statusRegi
 
 int ReadLba48(int fd, unsigned char **buffer, AtaErrorRegistersLBA48 **statusRegisters, uint64_t lba, uint16_t count);
 
-#endif //DISCIMAGECHEF_DEVICE_REPORT_ATA_H
+#endif //AARU_DEVICE_REPORT_ATA_H

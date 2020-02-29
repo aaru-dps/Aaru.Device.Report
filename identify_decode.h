@@ -1,11 +1,11 @@
 /***************************************************************************
-The Disc Image Chef
+Aaru Data Preservation Suite
 ----------------------------------------------------------------------------
 
 Filename       : identify_decode.h
 Author(s)      : Natalia Portillo
 
-Component      : DiscImageChef.Device.Report
+Component      : Aaru.Device.Report
 
 --[ Description ] ----------------------------------------------------------
 
@@ -30,8 +30,8 @@ Contains definitions for ATA IDENTIFY (PACKET) DEVICE structure.
 Copyright © 2011-2020 Natalia Portillo
 ****************************************************************************/
 
-#ifndef DISCIMAGECHEF_DEVICE_REPORT_IDENTIFY_DECODE_H
-#define DISCIMAGECHEF_DEVICE_REPORT_IDENTIFY_DECODE_H
+#ifndef AARU_DEVICE_REPORT_IDENTIFY_DECODE_H
+#define AARU_DEVICE_REPORT_IDENTIFY_DECODE_H
 
 char *DecodeGeneralConfiguration(uint16_t configuration);
 
@@ -73,4 +73,4 @@ char *DecodeSpecificConfiguration(uint16_t configuration);
 
 char *DecodeTrustedComputing(uint16_t trutedcomputing);
 
-#endif //DISCIMAGECHEF_DEVICE_REPORT_IDENTIFY_DECODE_H
+#endif //AARU_DEVICE_REPORT_IDENTIFY_DECODE_H

@@ -1,11 +1,11 @@
 /***************************************************************************
-The Disc Image Chef
+Aaru Data Preservation Suite
 ----------------------------------------------------------------------------
 
 Filename       : scsi.h
 Author(s)      : Natalia Portillo
 
-Component      : DiscImageChef.Device.Report
+Component      : Aaru.Device.Report
 
 --[ Description ] ----------------------------------------------------------
 
@@ -30,8 +30,8 @@ Contains SCSI definitions.
 Copyright © 2011-2020 Natalia Portillo
 ****************************************************************************/
 
-#ifndef DISCIMAGECHEF_DEVICE_REPORT_SCSI_H
-#define DISCIMAGECHEF_DEVICE_REPORT_SCSI_H
+#ifndef AARU_DEVICE_REPORT_SCSI_H
+#define AARU_DEVICE_REPORT_SCSI_H
 
 int SendScsiCommand(int fd,
                     void *cdb,
@@ -736,4 +736,4 @@ typedef struct
 } ScsiInquiry;
 #pragma pack(pop)
 
-#endif //DISCIMAGECHEF_DEVICE_REPORT_SCSI_H
+#endif //AARU_DEVICE_REPORT_SCSI_H

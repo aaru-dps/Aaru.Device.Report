@@ -1,11 +1,11 @@
 /***************************************************************************
-The Disc Image Chef
+Aaru Data Preservation Suite
 ----------------------------------------------------------------------------
 
 Filename       : scsi_report.h
 Author(s)      : Natalia Portillo
 
-Component      : DiscImageChef.Device.Report
+Component      : Aaru.Device.Report
 
 --[ Description ] ----------------------------------------------------------
 
@@ -30,11 +30,11 @@ Contains definitions used in SCSI reports.
 Copyright © 2011-2020 Natalia Portillo
 ****************************************************************************/
 
-#ifndef DISCIMAGECHEF_DEVICE_REPORT_SCSI_REPORT_H
-#define DISCIMAGECHEF_DEVICE_REPORT_SCSI_REPORT_H
-#define DIC_SCSI_REPORT_ELEMENT "SCSI"
-#define DIC_SCSI_INQUIRY_ELEMENT "Inquiry"
+#ifndef AARU_DEVICE_REPORT_SCSI_REPORT_H
+#define AARU_DEVICE_REPORT_SCSI_REPORT_H
+#define AARU_SCSI_REPORT_ELEMENT "SCSI"
+#define AARU_SCSI_INQUIRY_ELEMENT "Inquiry"
 
 void ScsiReport(int fd, xmlTextWriterPtr xmlWriter);
 
-#endif //DISCIMAGECHEF_DEVICE_REPORT_SCSI_REPORT_H
+#endif //AARU_DEVICE_REPORT_SCSI_REPORT_H

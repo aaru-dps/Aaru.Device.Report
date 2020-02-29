@@ -1,11 +1,11 @@
 /***************************************************************************
-The Disc Image Chef
+Aaru Data Preservation Suite
 ----------------------------------------------------------------------------
 
 Filename       : ata_report.c
 Author(s)      : Natalia Portillo
 
-Component      : DiscImageChef.Device.Report
+Component      : Aaru.Device.Report
 
 --[ Description ] ----------------------------------------------------------
 
@@ -59,7 +59,7 @@ void AtaReport(int fd, xmlTextWriterPtr xmlWriter)
     IdentifyDevice *identify = malloc(512);
     memcpy(identify, ata_ident, 512);
 
-    xmlTextWriterStartElement(xmlWriter, BAD_CAST DIC_ATA_REPORT_ELEMENT);
+    xmlTextWriterStartElement(xmlWriter, BAD_CAST AARU_ATA_REPORT_ELEMENT);
 
     if(le16toh(identify->GeneralConfiguration) == 0x848A)
     {

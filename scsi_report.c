@@ -1,11 +1,11 @@
 /***************************************************************************
-The Disc Image Chef
+Aaru Data Preservation Suite
 ----------------------------------------------------------------------------
 
 Filename       : scsi_report.c
 Author(s)      : Natalia Portillo
 
-Component      : DiscImageChef.Device.Report
+Component      : Aaru.Device.Report
 
 --[ Description ] ----------------------------------------------------------
 
@@ -74,7 +74,7 @@ void ScsiReport(int fd, xmlTextWriterPtr xmlWriter)
         return;
     }
 
-    xmlTextWriterStartElement(xmlWriter, BAD_CAST DIC_SCSI_REPORT_ELEMENT); // <SCSI>
+    xmlTextWriterStartElement(xmlWriter, BAD_CAST AARU_SCSI_REPORT_ELEMENT); // <SCSI>
     page_len = *(buffer + 4) + 5;
 
     ScsiInquiry *inquiry = malloc(sizeof(ScsiInquiry));
@@ -93,7 +93,7 @@ void ScsiReport(int fd, xmlTextWriterPtr xmlWriter)
         removable = (user_response == 'Y' || user_response == 'y');
     }
 
-    xmlTextWriterStartElement(xmlWriter, BAD_CAST DIC_SCSI_INQUIRY_ELEMENT); // <Inquiry>
+    xmlTextWriterStartElement(xmlWriter, BAD_CAST AARU_SCSI_INQUIRY_ELEMENT); // <Inquiry>
     xmlTextWriterWriteFormatElement(xmlWriter,
                                     BAD_CAST "AccessControlCoordinator",
                                     "%s",

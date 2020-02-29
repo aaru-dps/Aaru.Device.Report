@@ -1,11 +1,11 @@
 /***************************************************************************
-The Disc Image Chef
+Aaru Data Preservation Suite
 ----------------------------------------------------------------------------
 
 Filename       : main.h
 Author(s)      : Natalia Portillo
 
-Component      : DiscImageChef.Device.Report
+Component      : Aaru.Device.Report
 
 --[ Description ] ----------------------------------------------------------
 
@@ -30,13 +30,13 @@ Contains global definitions.
 Copyright © 2011-2020 Natalia Portillo
 ****************************************************************************/
 
-#ifndef DISCIMAGECHEF_DEVICE_REPORT_MAIN_H
-#define DISCIMAGECHEF_DEVICE_REPORT_MAIN_H
+#ifndef AARU_DEVICE_REPORT_MAIN_H
+#define AARU_DEVICE_REPORT_MAIN_H
 
-#define DIC_VERSION "4.5.99.1693"
-#define DIC_COPYRIGHT "Copyright © 2011-2020 Natalia Portillo"
+#define AARU_VERSION "4.5.99.1693"
+#define AARU_COPYRIGHT "Copyright © 2011-2020 Natalia Portillo"
 #define XML_ENCODING "UTF-8"
-#define DIC_REPORT_ROOT "DicDeviceReport"
+#define AARU_REPORT_ROOT "DicDeviceReport"
 
 typedef enum
 {
@@ -56,4 +56,4 @@ const char
 [
 ] =
         {"Unknown", "SCSI", "ATA", "ATAPI", "USB", "FireWire", "PCMCIA", "MultiMediaCard", "SecureDigital"};
-#endif //DISCIMAGECHEF_DEVICE_REPORT_MAIN_H
+#endif //AARU_DEVICE_REPORT_MAIN_H

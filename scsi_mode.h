@@ -1,11 +1,11 @@
 /***************************************************************************
-The Disc Image Chef
+Aaru Data Preservation Suite
 ----------------------------------------------------------------------------
 
 Filename       : scsi_mode.h
 Author(s)      : Natalia Portillo
 
-Component      : DiscImageChef.Device.Report
+Component      : Aaru.Device.Report
 
 --[ Description ] ----------------------------------------------------------
 
@@ -30,8 +30,8 @@ Contains definitions for SCSI MODE PAGEs.
 Copyright © 2011-2020 Natalia Portillo
 ****************************************************************************/
 
-#ifndef DISCIMAGECHEF_DEVICE_REPORT_SCSI_MODE_H
-#define DISCIMAGECHEF_DEVICE_REPORT_SCSI_MODE_H
+#ifndef AARU_DEVICE_REPORT_SCSI_MODE_H
+#define AARU_DEVICE_REPORT_SCSI_MODE_H
 
 typedef struct
 {
@@ -69,4 +69,4 @@ DecodedMode *DecodeMode6(unsigned char *modeResponse, uint8_t deviceType);
 
 DecodedMode *DecodeMode10(unsigned char *modeResponse, uint8_t deviceType);
 
-#endif //DISCIMAGECHEF_DEVICE_REPORT_SCSI_MODE_H
+#endif //AARU_DEVICE_REPORT_SCSI_MODE_H

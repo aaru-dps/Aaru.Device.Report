@@ -1,11 +1,11 @@
 /***************************************************************************
-The Disc Image Chef
+Aaru Data Preservation Suite
 ----------------------------------------------------------------------------
 
 Filename       : inquiry_decode.h
 Author(s)      : Natalia Portillo
 
-Component      : DiscImageChef.Device.Report
+Component      : Aaru.Device.Report
 
 --[ Description ] ----------------------------------------------------------
 
@@ -30,8 +30,8 @@ Contains definitions for SCSI INQUIRY structure.
 Copyright © 2011-2020 Natalia Portillo
 ****************************************************************************/
 
-#ifndef DISCIMAGECHEF_DEVICE_REPORT_INQUIRY_DECODE_H
-#define DISCIMAGECHEF_DEVICE_REPORT_INQUIRY_DECODE_H
+#ifndef AARU_DEVICE_REPORT_INQUIRY_DECODE_H
+#define AARU_DEVICE_REPORT_INQUIRY_DECODE_H
 
 char *DecodeTPGSValues(uint8_t capabilities);
 
@@ -41,4 +41,4 @@ char *DecodePeripheralQualifier(uint8_t capabilities);
 
 char *DecodeSPIClocking(uint8_t capabilities);
 
-#endif //DISCIMAGECHEF_DEVICE_REPORT_INQUIRY_DECODE_H
+#endif //AARU_DEVICE_REPORT_INQUIRY_DECODE_H

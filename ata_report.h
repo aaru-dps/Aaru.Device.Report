@@ -1,11 +1,11 @@
 /***************************************************************************
-The Disc Image Chef
+Aaru Data Preservation Suite
 ----------------------------------------------------------------------------
 
 Filename       : ata_report.h
 Author(s)      : Natalia Portillo
 
-Component      : DiscImageChef.Device.Report
+Component      : Aaru.Device.Report
 
 --[ Description ] ----------------------------------------------------------
 
@@ -30,10 +30,10 @@ Contains definitions used in ATA reports.
 Copyright © 2011-2020 Natalia Portillo
 ****************************************************************************/
 
-#ifndef DISCIMAGECHEF_DEVICE_REPORT_ATA_REPORT_H
-#define DISCIMAGECHEF_DEVICE_REPORT_ATA_REPORT_H
-#define DIC_ATA_REPORT_ELEMENT "ATA"
+#ifndef AARU_DEVICE_REPORT_ATA_REPORT_H
+#define AARU_DEVICE_REPORT_ATA_REPORT_H
+#define AARU_ATA_REPORT_ELEMENT "ATA"
 
 void AtaReport(int fd, xmlTextWriterPtr xmlWriter);
 
-#endif //DISCIMAGECHEF_DEVICE_REPORT_ATA_REPORT_H
+#endif //AARU_DEVICE_REPORT_ATA_REPORT_H

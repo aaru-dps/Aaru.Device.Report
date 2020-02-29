@@ -1,11 +1,11 @@
 /***************************************************************************
-The Disc Image Chef
+Aaru Data Preservation Suite
 ----------------------------------------------------------------------------
 
 Filename       : mmc_report.h
 Author(s)      : Natalia Portillo
 
-Component      : DiscImageChef.Device.Report
+Component      : Aaru.Device.Report
 
 --[ Description ] ----------------------------------------------------------
 
@@ -30,8 +30,8 @@ Contains definitions used in SCSI MultiMedia device reports.
 Copyright © 2011-2020 Natalia Portillo
 ****************************************************************************/
 
-#ifndef DISCIMAGECHEF_DEVICE_REPORT_MMC_REPORT_H
-#define DISCIMAGECHEF_DEVICE_REPORT_MMC_REPORT_H
+#ifndef AARU_DEVICE_REPORT_MMC_REPORT_H
+#define AARU_DEVICE_REPORT_MMC_REPORT_H
 
 void MmcReport(int fd, xmlTextWriterPtr xmlWriter, unsigned char *cdromMode);
 
@@ -48,4 +48,4 @@ typedef struct
     uint16_t           CurrentProfile;
     FeatureDescriptors Descriptors[65536];
 } SeparatedFeatures;
-#endif //DISCIMAGECHEF_DEVICE_REPORT_MMC_REPORT_H
+#endif //AARU_DEVICE_REPORT_MMC_REPORT_H

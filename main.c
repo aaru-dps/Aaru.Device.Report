@@ -1,11 +1,11 @@
 /***************************************************************************
-The Disc Image Chef
+Aaru Data Preservation Suite
 ----------------------------------------------------------------------------
 
 Filename       : main.c
 Author(s)      : Natalia Portillo
 
-Component      : DiscImageChef.Device.Report
+Component      : Aaru.Device.Report
 
 --[ Description ] ----------------------------------------------------------
 
@@ -63,8 +63,8 @@ int main(int argc, void *argv[])
     xmlTextWriterPtr     xmlWriter;
     const char           *ataName       = "ATA";
 
-    printf("The Disc Image Chef Device Reporter for Linux %s\n", DIC_VERSION);
-    printf("%s\n", DIC_COPYRIGHT);
+    printf("Aaru Data Preservation Suite Device Reporter for Linux %s\n", AARU_VERSION);
+    printf("%s\n", AARU_COPYRIGHT);
 
     if(argc != 2)
     {
@@ -148,7 +148,7 @@ int main(int argc, void *argv[])
         return 4;
     }
 
-    rc = xmlTextWriterStartElement(xmlWriter, BAD_CAST DIC_REPORT_ROOT);
+    rc = xmlTextWriterStartElement(xmlWriter, BAD_CAST AARU_REPORT_ROOT);
     if(rc < 0)
     {
         printf("Could not create XML report file.\n");
@@ -156,7 +156,7 @@ int main(int argc, void *argv[])
     }
 
     char *xmlComment = malloc(255);
-    sprintf(xmlComment, "Report created with DiscImageChef.Device.Report v%s", DIC_VERSION);
+    sprintf(xmlComment, "Report created with Aaru.Device.Report v%s", AARU_VERSION);
     rc = xmlTextWriterWriteComment(xmlWriter, xmlComment);
     if(rc < 0)
     {

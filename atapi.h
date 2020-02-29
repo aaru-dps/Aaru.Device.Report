@@ -1,11 +1,11 @@
 /***************************************************************************
-The Disc Image Chef
+Aaru Data Preservation Suite
 ----------------------------------------------------------------------------
 
 Filename       : atapi.h
 Author(s)      : Natalia Portillo
 
-Component      : DiscImageChef.Device.Report
+Component      : Aaru.Device.Report
 
 --[ Description ] ----------------------------------------------------------
 
@@ -30,9 +30,9 @@ Contains ATAPI definitions.
 Copyright © 2011-2020 Natalia Portillo
 ****************************************************************************/
 
-#ifndef DISCIMAGECHEF_DEVICE_REPORT_ATAPI_H
-#define DISCIMAGECHEF_DEVICE_REPORT_ATAPI_H
+#ifndef AARU_DEVICE_REPORT_ATAPI_H
+#define AARU_DEVICE_REPORT_ATAPI_H
 
 int IdentifyPacket(int fd, unsigned char **buffer, AtaErrorRegistersCHS **errorRegisters);
 
-#endif //DISCIMAGECHEF_DEVICE_REPORT_ATAPI_H
+#endif //AARU_DEVICE_REPORT_ATAPI_H

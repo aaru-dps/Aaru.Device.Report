@@ -1,11 +1,11 @@
 /***************************************************************************
-The Disc Image Chef
+Aaru Data Preservation Suite
 ----------------------------------------------------------------------------
 
 Filename       : atapi_report.c
 Author(s)      : Natalia Portillo
 
-Component      : DiscImageChef.Device.Report
+Component      : Aaru.Device.Report
 
 --[ Description ] ----------------------------------------------------------
 
@@ -56,7 +56,7 @@ void AtapiReport(int fd, xmlTextWriterPtr xmlWriter)
     IdentifyDevice *identify = malloc(512);
     memcpy(identify, atapi_ident, 512);
 
-    xmlTextWriterStartElement(xmlWriter, BAD_CAST DIC_ATAPI_REPORT_ELEMENT); // <ATA>
+    xmlTextWriterStartElement(xmlWriter, BAD_CAST AARU_ATAPI_REPORT_ELEMENT); // <ATA>
 
     if((uint64_t)*identify->AdditionalPID != 0 && (uint64_t)*identify->AdditionalPID != 0x2020202020202020)
         xmlTextWriterWriteElement(xmlWriter, BAD_CAST "AdditionalPid", AtaToCString(identify->AdditionalPID, 8));

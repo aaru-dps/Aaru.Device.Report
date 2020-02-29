@@ -1,11 +1,11 @@
 /***************************************************************************
-The Disc Image Chef
+Aaru Data Preservation Suite
 ----------------------------------------------------------------------------
 
 Filename       : ssc_report.h
 Author(s)      : Natalia Portillo
 
-Component      : DiscImageChef.Device.Report
+Component      : Aaru.Device.Report
 
 --[ Description ] ----------------------------------------------------------
 
@@ -30,8 +30,8 @@ Contains definitions used in SCSI Streaming device reports.
 Copyright © 2011-2020 Natalia Portillo
 ****************************************************************************/
 
-#ifndef DISCIMAGECHEF_DEVICE_REPORT_SSC_REPORT_H
-#define DISCIMAGECHEF_DEVICE_REPORT_SSC_REPORT_H
+#ifndef AARU_DEVICE_REPORT_SSC_REPORT_H
+#define AARU_DEVICE_REPORT_SSC_REPORT_H
 
 void SscReport(int fd, xmlTextWriterPtr xmlWriter);
 
@@ -84,4 +84,4 @@ typedef struct
     uint16_t         count;
     MediumDescriptor *descriptors[1170];
 } MediaTypeSupport;
-#endif //DISCIMAGECHEF_DEVICE_REPORT_SSC_REPORT_H
+#endif //AARU_DEVICE_REPORT_SSC_REPORT_H

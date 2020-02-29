@@ -1,11 +1,11 @@
 /***************************************************************************
-The Disc Image Chef
+Aaru Data Preservation Suite
 ----------------------------------------------------------------------------
 
 Filename       : atapi_report.h
 Author(s)      : Natalia Portillo
 
-Component      : DiscImageChef.Device.Report
+Component      : Aaru.Device.Report
 
 --[ Description ] ----------------------------------------------------------
 
@@ -30,11 +30,11 @@ Contains definitions used in ATAPI reports.
 Copyright © 2011-2020 Natalia Portillo
 ****************************************************************************/
 
-#ifndef DISCIMAGECHEF_DEVICE_REPORT_ATAPI_REPORT_H
-#define DISCIMAGECHEF_DEVICE_REPORT_ATAPI_REPORT_H
+#ifndef AARU_DEVICE_REPORT_ATAPI_REPORT_H
+#define AARU_DEVICE_REPORT_ATAPI_REPORT_H
 
-#define DIC_ATAPI_REPORT_ELEMENT "ATAPI"
+#define AARU_ATAPI_REPORT_ELEMENT "ATAPI"
 
 void AtapiReport(int fd, xmlTextWriterPtr xmlWriter);
 
-#endif //DISCIMAGECHEF_DEVICE_REPORT_ATAPI_REPORT_H
+#endif //AARU_DEVICE_REPORT_ATAPI_REPORT_H
